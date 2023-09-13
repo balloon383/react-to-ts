@@ -1,0 +1,14 @@
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(211, 211, 211, 0.438);
+    padding: 15px;
+}
+
+.formBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}

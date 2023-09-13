@@ -1,0 +1,24 @@
+.content__container{
+    width: 1200px;
+    margin: 0 auto;
+}
+.header{
+    background-color: lightgray;
+}
+.unordered{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 25px;
+}
+.displayBlock{
+    display: block;
+}
+.displayNone{
+    display: none;
+}

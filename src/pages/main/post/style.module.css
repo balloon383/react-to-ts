@@ -1,0 +1,24 @@
+.post{
+    padding: 25px 15px;
+}
+.postList > li{
+    margin-bottom: 8px;
+}
+.header{
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.displayBlock {
+    display: block;
+}
+
+.displayNone {
+    display: none;
+}
+.commentsBox > li{
+    margin-bottom: 15px;
+    padding-left: 15px;
+}
+.paragraph{
+    margin-bottom: 5px;
+}
