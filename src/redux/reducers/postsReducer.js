@@ -10,7 +10,7 @@ let setPostsReducer = (state = INITIAL_STATE, action) => {
         case SET_POSTS:
             return {
                 ...state, 
-                posts: action.payload
+                ...action.payload
             }
         default:
             return state;

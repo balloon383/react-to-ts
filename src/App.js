@@ -6,8 +6,17 @@ import Register from "./pages/register/Register.jsx";
 import User from './pages/user/User.jsx'
 import {Route, Routes} from 'react-router-dom'
 import PrivateRoute from './components/hoc/PrivateRoute'
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getPostsThunk } from './redux/actions/postsActions';
 
 function App() {
+  
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getPostsThunk())
+  }, [])
+  
 
   return (
     <div className="content__container">

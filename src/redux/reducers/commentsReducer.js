@@ -7,7 +7,7 @@ const setCommentsReducer = (state = INITIAL_STATE, action) => {
         case SET_COMMENTS:
             return {
                 ...state, 
-                comments: action.payload
+                ...action.payload
             }            
     
         default:

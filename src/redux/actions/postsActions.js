@@ -12,11 +12,11 @@ const actionCreator = (type, payload) => {
       }
   };
 
-  const setPostsAction = (user) => actionCreator(SET_POSTS, user);
+const setPostsAction = (posts) => actionCreator(SET_POSTS, posts);
 
 
 export const getPostsThunk = () => {
   return async (dispatch, getState) => {
-    await getPosts().then((data) => dispatch(setPostsAction(data)));
+    await getPosts().then((posts) => dispatch(setPostsAction(posts)));
   };
 };

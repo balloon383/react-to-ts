@@ -5,7 +5,6 @@ import setPostsReducer from "./reducers/postsReducer";
 
 const rootReducer = combineReducers({
   user: setUserReducer,
-  comments: setCommentsReducer,
   posts: setPostsReducer
 });
 
