@@ -35,6 +35,7 @@ export default function Main() {
       ],
     },
   ];
+  
   let posts = posters.map((res) => {
     return res.posts
   }).reduce((acc, cur) => { return acc.concat(cur) })

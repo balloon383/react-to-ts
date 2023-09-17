@@ -4,8 +4,8 @@ import setUserReducer from "./reducers/userReducer";
 import setPostsReducer from "./reducers/postsReducer";
 
 const rootReducer = combineReducers({
-  comments: setCommentsReducer,
   user: setUserReducer,
+  comments: setCommentsReducer,
   posts: setPostsReducer
 });
 

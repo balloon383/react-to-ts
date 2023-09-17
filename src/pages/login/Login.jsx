@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import {Button, TextField} from "@mui/material";
 import { useDispatch } from "react-redux";
 import {getUsers, changeStatus} from '../../api/api.js'
-import setUserAction from '../../redux/actions/userActions.js'
+import {setUserAction} from '../../redux/actions/userActions.js'
 
 
 export default function Login() {
@@ -28,17 +28,20 @@ async function checkUser(email, password) {
       }
       
     const user = await changeStatus(userCheck, "true");
+    console.log(user)
     localStorage.setItem(
       "loggedUser",
       JSON.stringify({
         email: user.email,
+        name: user.name,
         id: user.id,
+        status: user.status,
         posts: user.posts || [], 
         comments: user.comments || []
       })
     );
       console.log(user)
-    //dispatch(setUserAction(user));
+    dispatch(setUserAction(user));
     //setRedirect('true')
     return {}
   }
@@ -48,8 +51,10 @@ async function checkUser(email, password) {
       <section className={styles.container}>
         <Formik
           initialValues={{ email: "", password: "" }}
+          validateOnChange={false}
+          validateOnBlur={false}
           validate={(values) => {
-            const errors = {};
+            let errors = {};
             if (!values.email) {
               errors.email = "Required";
             } else if (
@@ -60,7 +65,7 @@ async function checkUser(email, password) {
             if (!values.password) {
               errors.password = 'Enter your password!'
             }
-
+            console.log(errors)
             if(Object.keys(errors).length === 0){
                 let loginValidation = checkUser(values.email, values.password)
                 errors = loginValidation
@@ -70,7 +75,6 @@ async function checkUser(email, password) {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
             }, 400);
           }}
