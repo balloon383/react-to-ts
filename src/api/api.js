@@ -30,7 +30,7 @@ const getPosts = async (id) => {
     let result
 
     await axios.get(POSTS_URL).then(res => result = res.data)
-    console.log(result)
+
     return result
 }
 const createPost = async (post) => {
