@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import { Formik } from "formik";
 import {Button, TextField} from "@mui/material";
 import { useDispatch } from "react-redux";
-import {getUsers, changeStatus} from '../../api/api.js'
+import {getUsers, changeStatus, getLoggedUser} from '../../api/api.js'
 import {setUserAction} from '../../redux/actions/userActions.js'
 
 
@@ -28,7 +28,6 @@ async function checkUser(email, password) {
       }
       
     const user = await changeStatus(userCheck, "true");
-    console.log(user)
     localStorage.setItem(
       "loggedUser",
       JSON.stringify({
@@ -36,11 +35,10 @@ async function checkUser(email, password) {
         name: user.name,
         id: user.id,
         status: user.status,
-        posts: user.posts || [], 
-        comments: user.comments || []
+        posts: user.posts ?? [], 
+        comments: user.comments ?? []
       })
     );
-      console.log(user)
     dispatch(setUserAction(user));
     //setRedirect('true')
     return {}
@@ -65,7 +63,6 @@ async function checkUser(email, password) {
             if (!values.password) {
               errors.password = 'Enter your password!'
             }
-            console.log(errors)
             if(Object.keys(errors).length === 0){
                 let loginValidation = checkUser(values.email, values.password)
                 errors = loginValidation

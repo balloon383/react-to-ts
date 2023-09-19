@@ -6,17 +6,19 @@ import {useSelector} from 'react-redux'
 
 export default function Header() {
   const [userName, setUserName] = useState('Log In')
-  const [logOut, setLogOut] = useState('Log Out')
   const [logOutStatus, setLogOutStatus] = useState(false)
   const user = useSelector(store => store.user)
 
   useEffect(() => {
     if(user.status){
       setUserName(user.name)
-      
+      setLogOutStatus(true)
     }
   }, [])
-  
+  function logOut(){
+    localStorage.clear()
+    
+  }
 
 
   return (
@@ -35,7 +37,7 @@ export default function Header() {
               </Link>
               <p className={logOutStatus === true ? style.DisplayBlock : style.displayNone}>
               <Link to="/">
-                <Button variant="outlined">{logOut}</Button>
+                <Button variant="outlined" onClick={logOut()}>Log Out</Button>
               </Link>
                 
               </p>

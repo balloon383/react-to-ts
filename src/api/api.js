@@ -52,7 +52,6 @@ const addComment = async (commenterId, postId, commentsArr, newPostsArr, posterI
 
 const changeStatus = async (user) => {
     let result = await axios.put(USER_URL + "/" + user.id, user)
-    console.log(result.data)
     return result.data
 }
 

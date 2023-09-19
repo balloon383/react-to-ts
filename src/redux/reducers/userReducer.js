@@ -1,4 +1,4 @@
-import { SET_USER } from '../actions/userActions'
+import { SET_USER, LOG_OUT } from '../actions/userActions'
 import {getLoggedUser} from '../../api/api'
 
 
@@ -27,7 +27,10 @@ let setUserReducer = (state = INITIAL_STATE, action) => {
           shoppingCart: action.payload.shoppingCart, 
           orders: action.payload.orders
       };
-    
+    case LOG_OUT:
+      return{
+
+      }
 
     default:
       return state;

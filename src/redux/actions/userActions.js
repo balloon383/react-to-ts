@@ -1,8 +1,9 @@
 import { getUsers } from "../../api/api.js";
 
-const SET_USER = 'SET_USER';
+const SET_USER = "SET_USER";
 const GET_USERS = "GET_USERS";
 const REGISTER_USER = "REGISTER_USER";
+const LOG_OUT = "LOG_OUT"
 
 
 const actionCreator = (type, payload) => {
@@ -23,4 +24,4 @@ const getUserThunk = () => {
   };
 };
 
-export {SET_USER, GET_USERS, REGISTER_USER, setUserAction, getUserThunk}
+export {SET_USER, GET_USERS, REGISTER_USER, LOG_OUT , setUserAction, getUserThunk}
