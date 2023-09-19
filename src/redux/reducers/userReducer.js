@@ -24,12 +24,12 @@ let setUserReducer = (state = INITIAL_STATE, action) => {
           status: action.payload.status,
           name: action.payload.name,
           email: action.payload.email,
-          shoppingCart: action.payload.shoppingCart, 
-          orders: action.payload.orders
       };
     case LOG_OUT:
       return{
-
+        status: 'false', 
+        comments: [],
+        posts: []
       }
 
     default:

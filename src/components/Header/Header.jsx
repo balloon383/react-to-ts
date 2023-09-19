@@ -2,22 +2,30 @@ import React, { useState, useEffect } from 'react'
 import style from './style.module.css'
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import { logOutAction } from '../../redux/actions/userActions';
 
 export default function Header() {
   const [userName, setUserName] = useState('Log In')
   const [logOutStatus, setLogOutStatus] = useState(false)
   const user = useSelector(store => store.user)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if(user.status){
       setUserName(user.name)
       setLogOutStatus(true)
+    } else if(!user.status){
+      setUserName("Log In")
+      setLogOutStatus(false)
     }
-  }, [])
+  }, [user])
+
   function logOut(){
+    setUserName("Log In")
+    setLogOutStatus(false)
     localStorage.clear()
-    
+    dispatch(logOutAction())
   }
 
 
@@ -37,7 +45,7 @@ export default function Header() {
               </Link>
               <p className={logOutStatus === true ? style.DisplayBlock : style.displayNone}>
               <Link to="/">
-                <Button variant="outlined" onClick={logOut()}>Log Out</Button>
+                <Button variant="outlined" onClick={() => logOut()}>Log Out</Button>
               </Link>
                 
               </p>

@@ -16,6 +16,7 @@ const actionCreator = (type, payload) => {
 };
 
 const setUserAction = (user) => actionCreator(SET_USER, user);
+const logOutAction = (user) => actionCreator(LOG_OUT, user);
 
 
 const getUserThunk = () => {
@@ -24,4 +25,4 @@ const getUserThunk = () => {
   };
 };
 
-export {SET_USER, GET_USERS, REGISTER_USER, LOG_OUT , setUserAction, getUserThunk}
+export {SET_USER, GET_USERS, REGISTER_USER, LOG_OUT , setUserAction, getUserThunk, logOutAction}
