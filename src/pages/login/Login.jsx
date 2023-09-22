@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.css'
 import { Formik } from "formik";
 import {Button, TextField} from "@mui/material";
 import { useDispatch } from "react-redux";
-import {getUsers, changeStatus, getLoggedUser} from '../../api/api.js'
-import {getUserThunk} from '../../redux/actions/userActions.js'
+import {getUsers, changeStatus} from '../../api/api.js'
+import {setUserAction} from '../../redux/actions/userActions.js'
+import { Navigate } from "react-router-dom";
+
 
 
 export default function Login() {
 
-
+  let [redirect, setRedirect] = useState(false)
   const dispatch = useDispatch()
   
 
@@ -40,11 +42,15 @@ async function checkUser(email, password) {
         comments: user.comments ?? []
       })
     );
-    console.log(user)
-    dispatch(getUserThunk(user.id));
-    //setRedirect('true')
+    dispatch(setUserAction(user));
+    setRedirect(true)
     return {}
   }
+
+  if (redirect === true) {
+    return <Navigate to='/'/>
+} 
+  
 
   return (
     <section className={styles.login}>

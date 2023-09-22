@@ -7,10 +7,6 @@ export default function PrivateRoute({ children }) {
 
   let isAuth = useSelector(store => store.user.status)
 
-  useEffect(() =>{
-    console.log(isAuth)
-  },[isAuth])
-
     if (!isAuth) {
       return <Navigate to="/login" />;
     }
