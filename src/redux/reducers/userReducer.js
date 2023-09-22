@@ -9,8 +9,9 @@ const INITIAL_STATE = {
   id: loggedUser.id,
   status: loggedUser.status,
   name: loggedUser.name,
-  posts: loggedUser.posts || [],
-  comments: loggedUser.comments || []
+  role: loggedUser.role,
+  posts: loggedUser.posts ?? [],
+  comments: loggedUser.comments ?? []
 };
 
 let setUserReducer = (state = INITIAL_STATE, action) => {
@@ -20,6 +21,7 @@ let setUserReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
           id: action.payload.id,
+          role: action.payload.role,
           status: action.payload.status,
           name: action.payload.name,
           email: action.payload.email,

@@ -1,4 +1,4 @@
-import { getUsers } from "../../api/api.js";
+import { getUser } from "../../api/api.js";
 
 const SET_USER = "SET_USER";
 const GET_USERS = "GET_USERS";
@@ -19,9 +19,9 @@ const setUserAction = (user) => actionCreator(SET_USER, user);
 const logOutAction = (user) => actionCreator(LOG_OUT, user);
 
 
-const getUserThunk = () => {
+const getUserThunk = (id) => {
   return async (dispatch, getState) => {
-    await getUsers().then((data) => dispatch(setUserAction(data)));
+    await getUser(id).then((data) => dispatch(setUserAction(data)));
   };
 };
 

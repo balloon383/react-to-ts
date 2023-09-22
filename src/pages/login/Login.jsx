@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import {Button, TextField} from "@mui/material";
 import { useDispatch } from "react-redux";
 import {getUsers, changeStatus, getLoggedUser} from '../../api/api.js'
-import {setUserAction} from '../../redux/actions/userActions.js'
+import {getUserThunk} from '../../redux/actions/userActions.js'
 
 
 export default function Login() {
@@ -34,12 +34,14 @@ async function checkUser(email, password) {
         email: user.email,
         name: user.name,
         id: user.id,
+        role: user.role,
         status: user.status,
         posts: user.posts ?? [], 
         comments: user.comments ?? []
       })
     );
-    dispatch(setUserAction(user));
+    console.log(user)
+    dispatch(getUserThunk(user.id));
     //setRedirect('true')
     return {}
   }

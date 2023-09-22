@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import style from "./style.module.css";
 import { Button } from "@mui/material";
+import { useSelector } from "react-redux";
 
 export default function Post({ post }) {
 
-    const [user, setUser] = useState({ name: "Newbie", role: "commenter" });
+    const user = useSelector(store => store.user)
     
     return (
       <section className={style.post}>
