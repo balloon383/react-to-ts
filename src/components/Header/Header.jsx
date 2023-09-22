@@ -4,21 +4,25 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux'
 import { logOutAction } from '../../redux/actions/userActions';
+import { getLoggedUser } from '../../api/api';
 
 export default function Header() {
   const [userName, setUserName] = useState('Log In')
   const [logOutStatus, setLogOutStatus] = useState(false)
   const user = useSelector(store => store.user)
+  const loggedUser = getLoggedUser()
   const dispatch = useDispatch()
 
   useEffect(() => {
     if(user.status){
       setUserName(user.name)
       setLogOutStatus(true)
-    } else if(!user.status){
+    } 
+    if(loggedUser.status === undefined){
       setUserName("Log In")
       setLogOutStatus(false)
     }
+
   }, [user])
 
   function logOut(){

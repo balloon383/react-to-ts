@@ -8,10 +8,9 @@ const INITIAL_STATE = []
 let setPostsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SET_POSTS:
-            return {
-                ...state, 
+            return [
                 ...action.payload
-            }
+            ]
         default:
             return state;
     }
