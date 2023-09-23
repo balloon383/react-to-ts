@@ -5,7 +5,7 @@ import {Button, TextField} from "@mui/material";
 import { useDispatch } from "react-redux";
 import {getUsers, changeStatus} from '../../api/api.js'
 import {setUserAction} from '../../redux/actions/userActions.js'
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 
 
@@ -122,9 +122,12 @@ async function checkUser(email, password) {
               >
                 Log In
               </Button>
-              <Button variant="contained" color="error" size="small">
-                Register
-              </Button>
+              <Link to="/register">
+                <Button variant="contained" color="error" size="small">
+                  Register
+                </Button>
+              </Link>
+              
             </form>
           )}
         </Formik>

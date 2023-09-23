@@ -26,6 +26,15 @@ const getUser = async (id) => {
     return result
     
 } 
+
+const createUser = async (user) => {
+    let result
+
+    await axios.post(POSTS_URL, user).then(res => result = res.data)
+    
+    return result
+}
+
 const getPosts = async (id) => {
     let result
 
